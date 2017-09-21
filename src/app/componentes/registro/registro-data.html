@@ -1,0 +1,61 @@
+<div class="postui post-con animated fadeIn fast">
+  <div class="con-wrap">
+    <h1>Registro</h1>
+    <hr>
+
+
+<form [formGroup]="formulario" (ngSubmit)="registro()">
+
+	<label>Nombre Cuenta:</label>
+	<p>
+		<input type="text"
+           formControlName="login">
+    <span *ngIf="formulario.controls['login'].errors?.existe && formulario.controls['login'].touched">El nombre de usuario ya se encuentra registrado.</span>
+    <span *ngIf="formulario.controls['login'].errors?.required && formulario.controls['login'].touched">El nombre de usuario es obligatorio.</span>
+    <span *ngIf="formulario.controls['login'].errors?.minlength">Por lo menos 4 caracteres.</span>
+    <span *ngIf="!formulario.controls['login'].errors?.existe && formulario.controls['login'].touched">Nombre de usuario disponible </span>
+  </p>
+
+	<label>Password:</label>
+	<p>
+		<input type="password"
+           formControlName="password">
+    <span *ngIf="formulario.controls['password'].errors?.required && formulario.controls['password'].touched">El password es obligatorio.</span>
+    <span *ngIf="formulario.controls['password'].errors?.minlength">Por lo menos 4 caracteres.</span>
+  </p>
+
+	<label>Nombre real:</label>
+	<p>
+		<input type="text"
+           formControlName="real_name">
+    <span *ngIf="formulario.controls['real_name'].errors?.required && formulario.controls['real_name'].touched">El nombre real es obligatorio.</span>
+    <span *ngIf="formulario.controls['real_name'].errors?.minlength">Por lo menos 4 caracteres.</span>
+  </p>
+
+  <label>Correo Electronico:</label>
+  <p>
+    <input type="email"
+           formControlName="email">
+    <span *ngIf="formulario.controls['email'].errors?.required && formulario.controls['email'].touched">El email es obligatorio.</span>
+    <span *ngIf="formulario.controls['email'].errors?.pattern">No tiene formato de correo.</span>
+  </p>
+
+  <label>Codigo de borrado:</label>
+	<p>
+    <input type="number"
+           formControlName="social_id">
+    <span *ngIf="formulario.controls['social_id'].errors?.pattern">Por lo menos 7 caracteres.</span>
+	</p>
+  <p>
+    <input type="checkbox" (click)="truecheck()">
+    <span>Aceptar los <a [routerLink]="['/terminos']">terminos y condiciones.</a></span>
+  </p>
+	<input  (click)="registro()"
+          type="submit"
+          value="{{titulo}}"
+          [disabled]="!formulario.valid || !checkbox"/>
+
+  </form>
+
+  </div>
+</div>

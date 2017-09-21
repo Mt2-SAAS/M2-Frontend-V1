@@ -1,0 +1,76 @@
+<div class="postui post-con">
+  <div class="con-wrap">
+    <h1>Registro</h1>
+    <hr>
+    <div class="">
+
+<form (ngSubmit)="registrar()" #formRegistro="ngForm" >
+
+	<label>Nombre Cuenta:</label>
+	<p>
+		<input [(ngModel)]="cuenta.login"
+           #login="ngModel"
+           type="text"
+           name="login"
+           minlength="4"
+           required>
+    <span *ngIf="login.errors?.required && login.touched ">El nombre es obligatorio.</span>
+    <span *ngIf="login.errors?.minlength">Por lo menos {{ login.errors.minlength.requiredLength }} caracteres.</span>
+  </p>
+
+	<label>Password:</label>
+	<p>
+		<input [(ngModel)]="cuenta.password"
+           #password="ngModel"
+           type="password"
+           name="password"
+           minlength="5"
+           required>
+		<span *ngIf="password.errors?.required && password.touched">El password es obligatorio</span>
+    <span *ngIf="password.errors?.minlength">Por lo menos {{ password.errors.minlength.requiredLength }} caracteres.</span>
+	</p>
+
+	<label>Nombre real:</label>
+	<p>
+		<input [(ngModel)]="cuenta.real_name"
+           #real_name="ngModel"
+           type="text"
+           name="real_name"
+           minlength="4"
+           required>
+    <span *ngIf="real_name.errors?.required && real_name.touched">El password es obligatorio</span>
+    <span *ngIf="real_name.errors?.minlength">Por lo menos {{ real_name.errors.minlength.requiredLength }} caracteres.</span>
+	</p>
+
+  <label>Correo Electronico:</label>
+  <p>
+    <input [(ngModel)]="cuenta.email"
+           #email="ngModel"
+           type="email"
+           name="email"
+           required
+           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+
+    <span *ngIf="email.errors?.required && email.touched">El correo es obligatorio</span>
+    <span *ngIf="email.errors?.pattern">El campo no tiene formato de correo</span>
+  </p>
+
+  <label>Codigo de borrado:</label>
+	<p>
+    <input [(ngModel)]="cuenta.social_id"
+           #social_id="ngModel"
+           type="number"
+           name="social_id"
+           pattern=".{7,7}"
+           required>
+
+		<span *ngIf="social_id.errors?.required && social_id.touched">El codigo de borrado es obligatorio</span>
+    <span *ngIf="social_id.errors?.pattern">Se requieren 7 caracteres.</span>
+	</p>
+
+	<input type="submit" value="{{titulo}}" [disabled]="!formRegistro.form.valid"/>
+
+</form>
+    </div>
+    </div>
+  </div>

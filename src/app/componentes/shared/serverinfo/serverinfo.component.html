@@ -1,0 +1,30 @@
+<div class="sbui sb-con-nao">
+
+  <h5>Informaci&oacute;n</h5>
+  <hr>
+  <!-- Servers -->
+  <div *ngIf="!cargando; else elseblock" class="srvstatus">
+    <p class="srv-on">Servidor online </p>
+    <p class="srv-on"></p>
+    <p class="srv-on"></p>
+    <div class="sep2"> </div>
+    <p class="srv-mode">{{ estadisticas.online }} Jugadores online.</p>
+    <div class="sep2"> </div>
+    <p class="srv-mode">{{ estadisticas.venticuatro }} Jugadores ult. 24h</p>
+    <div class="sep2"> </div>
+    <p class="srv-mode">Registros: {{ estadisticas.registros }} </p>
+    <div class="sep2"> </div>
+    <p class="srv-mode">Personajes: {{ estadisticas.personajes }} </p>
+    <div class="sep2"> </div>
+    <p class="srv-mode"> Nivel Inicial: 1 </p>
+    <div class="sep2"> </div>
+    <p class="srv-mode"> Nivel Maximo: 120</p>
+    <div class="sep2"> </div>
+    <p class="srv-mode">PvM 80% PVP 20% </p>
+    <div class="sep2"></div>
+  </div>
+  <ng-template #elseblock>
+    <div class="loader-personal">
+    </div>
+  </ng-template>
+</div>

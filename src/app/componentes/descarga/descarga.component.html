@@ -1,0 +1,32 @@
+<div class="postui post-con animated fadeIn fast">
+  <div class="con-wrap">
+  </div>
+
+    <div class="con-wrap">
+      <h1>Pagina de Descargas</h1>
+      <hr>
+      <p>
+        En esta pagina encontraras la descarga del cliente oficial del juego
+      </p>
+      <table *ngIf="!cargando; else elseblock" border="1" style="border: 1px solid #fff;">
+        	<tr>
+            	<td>Opciones </td>
+            	<td>Peso (MB)</td>
+            	<td>Fecha</td>
+            	<td>Link</td>
+            </tr>
+            <tr *ngFor="let descarga of descargas">
+                <td>{{ descarga.provedor }}</td>
+                <td>{{ descarga.peso }} MB</td>
+                <td>{{ descarga.fecha | date:'medium' }} </td>
+                <td><a href="{{ descarga.link }}" target="blank">Link </a></td>
+
+            </tr>
+        </table>
+        <ng-template #elseblock>
+          <div class="loader-personal">
+          </div>
+        </ng-template>
+        <br><br>
+    </div>
+  </div>
