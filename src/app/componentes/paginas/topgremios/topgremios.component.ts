@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TitleService } from '../../servicios/title.service';
-import { AppService } from '../../servicios/app.service';
+import { TitleService } from '../../../servicios/title.service';
+import { AppService } from '../../../servicios/app.service';
 
 @Component({
   selector: 'app-topgremios',

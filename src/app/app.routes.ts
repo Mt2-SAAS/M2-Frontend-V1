@@ -1,16 +1,16 @@
 import { RouterModule, Routes } from '@angular/router';
 
 //Importando modulos usados en las rutas
-import { HomeComponent } from './componentes/home/home.component';
-import { DescargaComponent } from './componentes/descarga/descarga.component';
+import { HomeComponent } from './componentes/paginas/home/home.component';
+import { DescargaComponent } from './componentes/paginas/descarga/descarga.component';
 //import { RegistroComponent } from './componentes/registro/registro.component';
-import { TopjugadoresComponent } from './componentes/topjugadores/topjugadores.component';
-import { LoginComponent } from './componentes/login/login.component';
-import { TopgremiosComponent } from './componentes/topgremios/topgremios.component';
+import { TopjugadoresComponent } from './componentes/paginas/topjugadores/topjugadores.component';
+import { LoginComponent } from './componentes/paginas/login/login.component';
+import { TopgremiosComponent } from './componentes/paginas/topgremios/topgremios.component';
 //import { DonacionesComponent } from './componentes/donaciones/donaciones.component';
-import { ExitoComponent } from './componentes/exito/exito.component';
-import { RegistroDataComponent } from './componentes/registro/registro-data.component';
-import { TerminosComponent } from './componentes/terminos/terminos.component';
+import { ExitoComponent } from './componentes/paginas/exito/exito.component';
+import { RegistroDataComponent } from './componentes/paginas/registro/registro-data.component';
+import { TerminosComponent } from './componentes/paginas/terminos/terminos.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },

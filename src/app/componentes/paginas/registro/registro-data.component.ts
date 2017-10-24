@@ -5,11 +5,11 @@ import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 
 //Importando Interface de cuenta
-import { Cuenta } from '../../interfaces/cuenta.interface';
+import { Cuenta } from '../../../interfaces/cuenta.interface';
 
 //Importando servicios
-import { AppService } from '../../servicios/app.service';
-import { TitleService } from '../../servicios/title.service';
+import { AppService } from '../../../servicios/app.service';
+import { TitleService } from '../../../servicios/title.service';
 
 @Component({
   selector: 'app-registrodata',

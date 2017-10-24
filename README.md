@@ -1,6 +1,7 @@
+<<<<<<< HEAD
 # Metin2app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
+Este proyecto ha sido generado con [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
 ## Development server
 
@@ -26,3 +27,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# Metin2RestClient
+Cliente Rest de metin2
+>>>>>>> 5abc68ae4359f0506b0d9cb0d2c19cdb5b3f1d70

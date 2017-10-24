@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../servicios/app.service';
-import { TitleService } from '../../servicios/title.service';
+import { AppService } from '../../../servicios/app.service';
+import { TitleService } from '../../../servicios/title.service';
 
 @Component({
   selector: 'app-descarga',

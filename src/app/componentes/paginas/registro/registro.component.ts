@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TitleService } from '../../servicios/title.service';
+import { TitleService } from '../../../servicios/title.service';
 //import { FormGroup, FormControl, Validator} from '@angular/forms';
 import { NgForm } from '@angular/forms';
-import { Cuenta } from '../../interfaces/cuenta.interface';
-import { AppService } from '../../servicios/app.service';
+import { Cuenta } from '../../../interfaces/cuenta.interface';
+import { AppService } from '../../../servicios/app.service';
 import { Router } from '@angular/router';
 
 @Component({

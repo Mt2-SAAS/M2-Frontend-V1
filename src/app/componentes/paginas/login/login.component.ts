@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TitleService } from '../../servicios/title.service';
+import { TitleService } from '../../../servicios/title.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import { TitleService } from '../../servicios/title.service';
 export class LoginComponent implements OnInit {
 
   constructor(private _titulo:TitleService) {
-  this._titulo.setTitulo('Metin2 '+this._titulo.servername+' - Login'); 
+  this._titulo.setTitulo('Metin2 '+this._titulo.servername+' - Login');
   }
 
   ngOnInit() {
