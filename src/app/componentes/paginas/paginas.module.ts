@@ -11,6 +11,7 @@ import { RegistroDataComponent } from './registro/registro-data.component';
 import { TerminosComponent } from './terminos/terminos.component';
 import { TopgremiosComponent } from './topgremios/topgremios.component';
 import { TopjugadoresComponent } from './topjugadores/topjugadores.component';
+import { DashboardComponent } from './dashborad/dashboard.component';
 
 @NgModule({
   imports:[
@@ -28,7 +29,8 @@ import { TopjugadoresComponent } from './topjugadores/topjugadores.component';
     RegistroDataComponent,
     TerminosComponent,
     TopgremiosComponent,
-    TopjugadoresComponent
+    TopjugadoresComponent,
+    DashboardComponent
   ],
   exports:[
     DescargaComponent,
@@ -39,7 +41,8 @@ import { TopjugadoresComponent } from './topjugadores/topjugadores.component';
     RegistroDataComponent,
     TerminosComponent,
     TopgremiosComponent,
-    TopjugadoresComponent
+    TopjugadoresComponent,
+    DashboardComponent
   ]
 })
 

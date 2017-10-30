@@ -3,7 +3,30 @@
     <h1>Login</h1>
     <hr>
     <div class="">
+      <form [formGroup]="formulario" (ngSubmit)="login()">
 
+      	<label>Cuenta:</label>
+      	<p>
+      		<input type="text"
+                 formControlName="login">
+          <span *ngIf="formulario.controls['login'].errors?.required && formulario.controls['login'].touched">El nombre de usuario es obligatorio.</span>
+          <span *ngIf="formulario.controls['login'].errors?.minlength">Por lo menos 4 caracteres.</span>
+        </p>
+
+      	<label>Password:</label>
+      	<p>
+      		<input type="password"
+                 formControlName="password">
+          <span *ngIf="formulario.controls['password'].errors?.required && formulario.controls['password'].touched">El password es obligatorio.</span>
+          <span *ngIf="formulario.controls['password'].errors?.minlength">Por lo menos 4 caracteres.</span>
+        </p>
+
+        <input  (click)="login()"
+                type="submit"
+                value="{{titulo}}"
+                [disabled]="!formulario.valid"/>
+        <span *ngIf="mensaje"> Nombre de usuario o contraseña incorrecto </span>
+        </form>
     </div>
     </div>
   </div>

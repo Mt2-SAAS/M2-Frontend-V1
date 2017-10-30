@@ -11,6 +11,7 @@ import { TopgremiosComponent } from './componentes/paginas/topgremios/topgremios
 import { ExitoComponent } from './componentes/paginas/exito/exito.component';
 import { RegistroDataComponent } from './componentes/paginas/registro/registro-data.component';
 import { TerminosComponent } from './componentes/paginas/terminos/terminos.component';
+import { DashboardComponent } from './componentes/paginas/dashborad/dashboard.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,6 +22,7 @@ const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'terminos', component: TerminosComponent },
   { path: 'descarga', component: DescargaComponent },
+  { path: 'panel_usuario', component: DashboardComponent },
   //{ path: 'donaciones', component: DonacionesComponent },
   { path: 'registro_exitoso', component: ExitoComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }

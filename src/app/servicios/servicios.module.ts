@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppService } from './app.service';
 import { TitleService } from './title.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   imports:[],
@@ -15,7 +16,8 @@ export class ServiciosModule {
       ngModule: ServiciosModule,
       providers:[
         AppService,
-        TitleService
+        TitleService,
+        AuthService
       ]
     }
   }
@@ -23,5 +25,6 @@ export class ServiciosModule {
 
 export {
   AppService,
-  TitleService
+  TitleService,
+  AuthService
 }

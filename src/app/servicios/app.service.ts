@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 //importando interface requerida
 import { Cuenta } from '../interfaces/cuenta.interface';
+import { Ingreso } from '../interfaces/ingreso.interface';
 
 //Importando modulos Http y Headers para trabajar correctamente.
 import { Http, Headers } from '@angular/http';
@@ -10,8 +11,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class AppService {
 
-  //public AppURL:string = "http://172.16.5.15:8071/api";
-  public AppURL:string = "https://api.l4st.xyz/api";
+  public AppURL:string = "http://172.16.5.15:8071/api";
+  //public AppURL:string = "https://api.l4st.xyz/api";
 
   constructor(
     private _http:Http
@@ -87,6 +88,32 @@ export class AppService {
               return respuesta.json();
             })
 
+  }
+
+  IngresoApi(data:Ingreso){
+    let url = `${this.AppURL}/login/`;
+    let body = JSON.stringify( data );
+    let headers = new Headers({
+      'Content-Type':'application/json'
+    });
+
+    return this._http.post(url, body, {headers:headers})
+           .map(respuesta => {
+             return respuesta.json();
+           })
+  }
+
+  ComprobaIngresoApi(data:string){
+    let url = `${this.AppURL}/comprobar/`;
+    let body = JSON.stringify( {'jwt':data} );
+    let headers = new Headers({
+      'Content-Type':'application/json'
+    });
+
+    return this._http.post(url, body, {headers:headers})
+           .map(respuesta => {
+             return respuesta.json();
+           })
   }
 
 }
