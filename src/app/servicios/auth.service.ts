@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AppService } from './app.service';
 import { Ingreso } from '../interfaces/ingreso.interface';
+import { Router} from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -8,7 +9,8 @@ export class AuthService {
   estado:boolean;
 
   constructor(
-    private _app:AppService
+    private _app:AppService,
+    private router: Router
   ) {  }
 
   public login(data:Ingreso): boolean {
@@ -30,6 +32,14 @@ export class AuthService {
     //console.log(new Date().getTime());
     const expiresAt = Date.parse(JSON.parse(localStorage.getItem('expired_at')));
     return new Date().getTime() < expiresAt;
+  }
+
+  public logout(){
+    //Borrando localStorage
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('expired_at');
+    //Navegando hacia el home
+    this.router.navigate(['/'])
   }
 
 }

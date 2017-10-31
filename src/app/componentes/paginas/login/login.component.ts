@@ -46,14 +46,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (localStorage.getItem('jwt')){
+    if (localStorage.getItem('jwt') && localStorage.getItem('expired_at')){
       this._router.navigate(['/panel_usuario'])
     }
   }
 
   login(){
     this.mensaje = false;
-    if(!this._auth.login(this.formulario.value)){
+    if(this._auth.login(this.formulario.value)){
       this._router.navigate(['/panel_usuario'])
     } else {
       this.mensaje = true

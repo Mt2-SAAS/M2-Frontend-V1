@@ -13,6 +13,8 @@ import { RegistroDataComponent } from './componentes/paginas/registro/registro-d
 import { TerminosComponent } from './componentes/paginas/terminos/terminos.component';
 import { DashboardComponent } from './componentes/paginas/dashborad/dashboard.component';
 
+import { AuthGuardService } from './servicios/servicios.module';
+
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   //{ path: 'registro', component: RegistroComponent },
@@ -22,7 +24,11 @@ const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'terminos', component: TerminosComponent },
   { path: 'descarga', component: DescargaComponent },
-  { path: 'panel_usuario', component: DashboardComponent },
+  {
+    path: 'panel_usuario',
+    component: DashboardComponent,
+    canActivate: [AuthGuardService]
+  },
   //{ path: 'donaciones', component: DonacionesComponent },
   { path: 'registro_exitoso', component: ExitoComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
