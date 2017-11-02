@@ -17,8 +17,14 @@ export class AuthService {
     this._app.IngresoApi(data)
         .subscribe(respuesta => {
           if(respuesta.jwt){
-            localStorage.setItem('jwt',JSON.stringify(respuesta.jwt))
-            localStorage.setItem('expired_at',JSON.stringify(respuesta.expired_at))
+            localStorage.setItem('jwt',JSON.stringify(respuesta.jwt));
+            //localStorage.setItem('expired_at',JSON.stringify(respuesta.expired_at))
+            let expired_at = JSON.stringify(Date.parse(respuesta.expired_at));
+            let s = expired_at + '';
+            let d:number = 0;
+            s = s.replace('.','');
+            d = parseInt(s);
+            localStorage.setItem('expired_at',s)
             this.estado = true;
           } else {
             this.estado = false;
@@ -30,7 +36,11 @@ export class AuthService {
   public isAuthenticated():boolean {
     //console.log(expiresAt);
     //console.log(new Date().getTime());
-    const expiresAt = Date.parse(JSON.parse(localStorage.getItem('expired_at')));
+    const expiresAt = JSON.parse(localStorage.getItem('expired_at'));
+    console.log("Primero este tiene el tiempo");
+    console.log(expiresAt);
+    console.log("este tiene el tiempo ahora");
+    console.log(new Date().getTime());
     return new Date().getTime() < expiresAt;
   }
 
