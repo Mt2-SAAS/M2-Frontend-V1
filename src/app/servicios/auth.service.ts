@@ -17,14 +17,10 @@ export class AuthService {
     this._app.IngresoApi(data)
         .subscribe(respuesta => {
           if(respuesta.jwt){
+            let expired_at = JSON.stringify(Date.parse(respuesta.expired_at)).replace('.','');
             localStorage.setItem('jwt',JSON.stringify(respuesta.jwt));
+            localStorage.setItem('expired_at',expired_at);
             //localStorage.setItem('expired_at',JSON.stringify(respuesta.expired_at))
-            let expired_at = JSON.stringify(Date.parse(respuesta.expired_at));
-            let s = expired_at + '';
-            let d:number = 0;
-            s = s.replace('.','');
-            d = parseInt(s);
-            localStorage.setItem('expired_at',s)
             this.estado = true;
           } else {
             this.estado = false;

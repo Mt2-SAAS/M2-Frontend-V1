@@ -21,8 +21,7 @@
           <span *ngIf="formulario.controls['password'].errors?.minlength">Por lo menos 4 caracteres.</span>
         </p>
 
-        <input  (click)="login()"
-                type="submit"
+        <input  type="submit"
                 value="{{titulo}}"
                 [disabled]="!formulario.valid"/>
         <span *ngIf="mensaje"> Nombre de usuario o contraseña incorrecto </span>

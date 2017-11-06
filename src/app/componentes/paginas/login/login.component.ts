@@ -53,14 +53,20 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.mensaje = false;
-    if(this._auth.login(this.formulario.value)){
-      this._router.navigate(['/panel_usuario'])
-    } else {
-      this.mensaje = true
-      setTimeout( () => {
-        this.mensaje = false
-      }, 5000);
-    }
+    let respuesta = this._auth.login(this.formulario.value)
+
+    setTimeout(()=> {
+      if(respuesta == true){
+        this._router.navigate(['/panel_usuario'])
+      } else {
+        this.mensaje = true
+        setTimeout( () => {
+          this.mensaje = false
+        }, 5000);
+      }
+    },2000)
+
+
   }
 
 }
