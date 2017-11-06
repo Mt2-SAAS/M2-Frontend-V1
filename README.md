@@ -1,33 +1,24 @@
-<<<<<<< HEAD
 # Metin2app
+---
+[![Build Status](https://travis-ci.org/luisito666/F2RestClient.svg?branch=master)](https://travis-ci.org/luisito666/F2RestClient)
 
-Este proyecto ha sido generado con [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
+## Servidor de desarrollo
 
-## Development server
+Ejecuta `ng serve` para iniciar el servidor de desarrollo. Navega a `http://localhost:4200/`. La aplicacion es recargada automaticamente cada vez que realizas un cambio en los archivos fuentes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Generacion automatico
 
-## Code scaffolding
+Ejecuta `ng generate component component-name` para generar un nuevo componente. tambien puedes usar `ng generate directive|pipe|service|class|module`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+## Compilar
 
-## Build
+Ejecuta `ng build` ejecuta para compilar el proyecto. El proyecto compilado quedara en el directorio `dist/` , use la opción `-prod` para generar un compilado listo para produccion.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 =======
-# Metin2RestClient
-Cliente Rest de metin2
->>>>>>> 5abc68ae4359f0506b0d9cb0d2c19cdb5b3f1d70
+## Descripcion
+
+Este proyecto es realizo para poner al dia las web's usadas en los proyectos de metin2, y poder auditar el codigo desde un inicio y determinar si es seguro, ya que es un proyecto open source cualquier persona puede aportar codigo y reportar cualquier error de codigo o repararlo.
+
+Actualmente esta en una fase beta, ya que estamos termiando de desarrollar el login JWT.
+
+
