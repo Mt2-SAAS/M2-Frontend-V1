@@ -65,10 +65,9 @@ export class LoginComponent implements OnInit {
       } else {
         this.formulario.reset(ingreso);
         this.mensaje = true;
-
         setTimeout( () => {
           this.mensaje = false;
-        }, 5000);
+        }, 5000);        
       }
     },1000);
 

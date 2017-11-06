@@ -41,25 +41,35 @@ export class AuthService {
     //Borrando localStorage
     localStorage.removeItem('jwt');
     localStorage.removeItem('expired_at');
+    localStorage.removeItem('identidad');
     //Navegando hacia el home
     this.router.navigate(['/home'])
   }
 
-  public getdata_timmer():Data {
+  public getdata_timmer() {
     if( localStorage.getItem('jwt') && localStorage.getItem('expired_at') ){
+
       this._app.ComprobaIngresoApi(JSON.parse(localStorage.getItem('jwt')))
             .subscribe(respuesta => {
                 if(respuesta.status == "expiro"){
                     localStorage.removeItem('jwt');
                     localStorage.removeItem('expired_at');
+                    localStorage.removeItem('identidad');
                     this.router.navigate(['/login']);
                 } else {
-                  console.log(respuesta);
+                  //console.log(respuesta);
                   this.data = respuesta
                 }
             })
-        return this.data;
+        if (typeof localStorage.getItem('identidad') == 'object'){
+        localStorage.setItem('identidad',JSON.stringify(this.data));
+        }
       }
+  }
+
+  public getStorage():Data{
+    this.data = JSON.parse(localStorage.getItem('identidad'))
+    return this.data;
   }
 
 }

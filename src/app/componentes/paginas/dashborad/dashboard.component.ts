@@ -20,11 +20,11 @@ export class DashboardComponent implements OnInit {
   constructor(
     private _app:AppService,
     private _titulo:TitleService,
-    //private _router:Router,
     public auth:AuthService
   ){
     this._titulo.setTitulo('Metin2 '+this._titulo.servername+' - Panel usuario');
-    this.data = this.auth.getdata_timmer();
+    this.auth.getdata_timmer();
+    this.data = this.auth.getStorage();
     }
 
   ngOnInit(){
