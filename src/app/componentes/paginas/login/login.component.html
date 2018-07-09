@@ -3,8 +3,8 @@
     <h1>Login</h1>
     <hr>
     <div class="">
-      <form [formGroup]="formulario" (ngSubmit)="login()">
-
+      <!-- <form [formGroup]="formulario" (ngSubmit)="login()"> -->
+      <form [formGroup]="formulario">
       	<label>Cuenta:</label>
       	<p>
       		<input type="text"
@@ -21,7 +21,8 @@
           <span *ngIf="formulario.controls['password'].errors?.minlength">Por lo menos 4 caracteres.</span>
         </p>
 
-        <input  type="submit"
+        <input  (click)="login()"
+                type="submit"
                 value="{{titulo}}"
                 [disabled]="!formulario.valid"/>
         <span *ngIf="mensaje"> Nombre de usuario o contraseña incorrecto </span>
