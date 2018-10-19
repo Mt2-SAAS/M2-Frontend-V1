@@ -14,11 +14,16 @@ export class ServerinfoComponent implements OnInit {
   constructor(
     private _app: AppService
   ) {
-    this._app.getStadisticas()
-            .subscribe(data => {
-              this.estadisticas = data.data;
+    this._app.getStadisticas().then( (estadisticas) => {
+      //console.log(estadisticas)
+      this.cargando = false
+      this.estadisticas = estadisticas
+    })
+            /* .then(data => {
+              console.log(data)
+              this.estadisticas = data;
               this.cargando = false;
-            });
+            }); */
   }
 
   ngOnInit() {

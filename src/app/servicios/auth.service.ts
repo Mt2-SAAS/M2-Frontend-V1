@@ -15,19 +15,22 @@ export class AuthService {
     private router: Router
   ) {  }
 
-  public login(data:Ingreso): boolean {
-    this._app.IngresoApi(data)
-        .subscribe(respuesta => {
-          if(respuesta.jwt){
-            let expired_at = JSON.stringify(Date.parse(respuesta.expired_at)).replace('.','');
-            localStorage.setItem('jwt',JSON.stringify(respuesta.jwt));
-            localStorage.setItem('expired_at',expired_at);
-            this.estado = true;
-          } else {
-            this.estado = false;
-          }
-        });
-      return this.estado;
+  public login(data:Ingreso): any {
+      this._app.IngresoApi(data)
+          .then(respuesta => {
+            if(respuesta.jwt) {
+              let expired_at = JSON.stringify(Date.parse(respuesta.expired_at)).replace('.','');
+              localStorage.setItem('jwt',JSON.stringify(respuesta.jwt));
+              localStorage.setItem('expired_at',expired_at);
+              this.estado = true;
+            } else {
+              this.estado = false;
+            }
+            return this.estado;
+          }, err => {
+            return err;
+          });
+  
   }
 
   public isAuthenticated():boolean {

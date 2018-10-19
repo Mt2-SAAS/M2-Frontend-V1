@@ -1,0 +1,22 @@
+a.items[0].spec.ports[0].node_port
+
+from kubernetes import client, config
+config.load_incluster_config()
+api = client.CoreV1Api()
+service = api.list_namespaced_service("default")
+for items in service.items:
+  if items.metadata.name == 'servientrega-publicsvc':
+    portlist = items.spec
+    print (portlist)
+    
+    
+
+ def get_data(self, servicename):
+    service_list = self.api.list_namespaced_service("default")
+    while True:
+      for service in service_list.items:
+        if service.metadata.name == servicename:
+          portlist = service.spec.ports
+          for port in portlist:
+            if port.name == 'port-5000':
+               portvalue = port.port 

@@ -7,12 +7,14 @@ import { Ingreso } from '../interfaces/ingreso.interface';
 //Importando modulos Http y Headers para trabajar correctamente.
 import { Http, Headers } from '@angular/http';
 import 'rxjs/Rx';
+import { reject } from 'q';
 
 @Injectable()
 export class AppService {
 
-  public AppURL:string = "http://172.16.5.15:8071/api";
-  //public AppURL:string = "https://api.l4st.xyz/api";
+  //public AppURL:string = "http://172.16.5.15:8071/api";
+  public AppURL:string = "https://testing.colombiawarez.org/api";
+  //public estadisticas: any;
 
   constructor(
     private _http:Http
@@ -20,10 +22,22 @@ export class AppService {
 
   getStadisticas(){
     //Creando la URL para consumir el servicio
-    let url = `${this.AppURL}/stats/?format=json`;
 
-    return this._http.get(url)
-              .map(respuesta => respuesta.json());
+    let promise = new Promise((resolve, reject) => {
+      
+      let url = `${this.AppURL}/stats/?format=json`;
+
+      return this._http.get(url)
+                .toPromise()
+                .then(respuesta => {
+                  //this.estadisticas = respuesta.json().data
+                  resolve(respuesta.json().data);
+                })
+    })
+
+    //let url = `${this.AppURL}/stats/?format=json`;
+
+    return promise
 
   }
 
@@ -90,17 +104,24 @@ export class AppService {
 
   }
 
-  IngresoApi(data:Ingreso){
-    let url = `${this.AppURL}/login/`;
-    let body = JSON.stringify( data );
-    let headers = new Headers({
-      'Content-Type':'application/json'
+  IngresoApi(data:Ingreso): any{
+
+    let promise = new Promise( (resolve, reject) => {
+
+      let url = `${this.AppURL}/login/`;
+      let body = JSON.stringify( data );
+      let headers = new Headers({
+        'Content-Type':'application/json'
+      });
+
+      return this._http.post(url, body, {headers:headers})
+            .toPromise()
+            .then(respuesta => {
+              resolve(respuesta.json());     
+            })
     });
 
-    return this._http.post(url, body, {headers:headers})
-           .map(respuesta => {
-             return respuesta.json();
-           })
+    return promise
   }
 
   ComprobaIngresoApi(data:string){

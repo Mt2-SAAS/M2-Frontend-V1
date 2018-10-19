@@ -51,27 +51,24 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(){
+  login() {
     this.mensaje = false;
     this._auth.login(this.formulario.value);
+
     let ingreso:Ingreso = {
       login: this.formulario.value['login'],
       password:''
     }
 
-    setTimeout(()=> {
-      if(this._auth.isAuthenticated() == true){
-        this._router.navigate(['/panel_usuario']);
-      } else {
-        this.formulario.reset(ingreso);
-        this.mensaje = true;
-        setTimeout( () => {
-          this.mensaje = false;
-        }, 5000);        
-      }
-    },1000);
-
-
+    if(this._auth.isAuthenticated() === true) {
+      this._router.navigate(['/panel_usuario']);
+    } else {
+      this.formulario.reset(ingreso);
+      this.mensaje = true;
+      setTimeout(() => {
+        this.mensaje = false;
+      }, 5000);
+    }
   }
 
 }
