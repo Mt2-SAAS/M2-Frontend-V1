@@ -15,12 +15,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public titulo:string = "Ingresar";
-  public mensaje:boolean = false;
-  public formulario:FormGroup;
-  public ingreso:Ingreso = {
-    login:null,
-    password:null
+  public titulo: string = 'Ingresar';
+  public mensaje: boolean = false;
+  public formulario: FormGroup;
+  public ingreso: Ingreso = {
+    login: null,
+    password: null
   }
 
   constructor(
@@ -28,14 +28,14 @@ export class LoginComponent implements OnInit {
     private _router: Router,
     private _auth: AuthService
   ) {
-  this._titulo.setTitulo('Metin2 '+this._titulo.servername+' - Login');
+  this._titulo.setTitulo('Metin2 ' + this._titulo.servername + ' - Login');
 
   this.formulario = new FormGroup({
-    'login': new FormControl('',[
+    'login': new FormControl('', [
                                   Validators.required,
                                   Validators.minLength(4)
                                 ]),
-    'password': new FormControl('',[
+    'password': new FormControl('', [
                                   Validators.required,
                                   Validators.minLength(4)
                                 ])
@@ -53,22 +53,32 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.mensaje = false;
-    this._auth.login(this.formulario.value);
-
-    let ingreso:Ingreso = {
+    let ingreso: Ingreso = {
       login: this.formulario.value['login'],
-      password:''
+      password: ''
     }
+    this._auth.login(this.formulario.value)
+      .then( () => {
+        this.mensaje = true
+        this.redirect(ingreso)
+      })
+      .catch( () => {
+        this.mensaje = true
+        this.formulario.reset(ingreso);
+        setTimeout(() => {
+          this.mensaje = false;
+        }, 5000);
+      });
+  }
 
-    if(this._auth.isAuthenticated() === true) {
-      this._router.navigate(['/panel_usuario']);
-    } else {
-      this.formulario.reset(ingreso);
-      this.mensaje = true;
-      setTimeout(() => {
-        this.mensaje = false;
-      }, 5000);
-    }
+  redirect(ingreso) {
+    const promise = new Promise( (resolve, reject) => {
+      if (this._auth.isAuthenticated() === true) {
+        this._router.navigate(['/panel_usuario']);
+        resolve();
+      }
+    });
+    return promise
   }
 
 }
