@@ -17,11 +17,11 @@ export class AuthService {
   ) {  }
 
   public login(data: Ingreso): any {
-    let promise = new Promise (( resolve , reject) => {
+    const promise = new Promise (( resolve , reject) => {
       this._app.IngresoApi(data)
           .then(respuesta => {
             if (respuesta.jwt) {
-              let expired_at = JSON.stringify(Date.parse(respuesta.expired_at)).replace('.', '');
+              const expired_at = JSON.stringify(Date.parse(respuesta.expired_at)).replace('.', '');
               localStorage.setItem('jwt', JSON.stringify(respuesta.jwt));
               localStorage.setItem('expired_at', expired_at);
               this.estado = true;
@@ -30,9 +30,6 @@ export class AuthService {
               this.estado = false;
               reject();
             }
-            return this.estado;
-          }, err => {
-            return err;
           });
     });
     return promise;
@@ -55,27 +52,35 @@ export class AuthService {
   }
 
   public getdata_timmer() {
-    if ( localStorage.getItem('jwt') && localStorage.getItem('expired_at') ) {
 
-      this._app.ComprobaIngresoApi(JSON.parse(localStorage.getItem('jwt')))
-            .subscribe(respuesta => {
-                if (respuesta.status == "expiro"){
-                    localStorage.removeItem('jwt');
-                    localStorage.removeItem('expired_at');
-                    localStorage.removeItem('identidad');
-                    this.router.navigate(['/login']);
-                } else {
-                  // console.log(respuesta);
-                  this.data = respuesta
-                }
-            })
-        if (typeof localStorage.getItem('identidad') == 'object') {
-        localStorage.setItem('identidad', JSON.stringify(this.data));
+    const promise = new Promise((resolve, reject) => {
+
+      if ( localStorage.getItem('jwt') && localStorage.getItem('expired_at') ) {
+        if (!this.data) {
+          this._app.ComprobaIngresoApi(JSON.parse(localStorage.getItem('jwt')))
+              .subscribe(respuesta => {
+                  if (respuesta.status === 'expiro') {
+                      localStorage.removeItem('jwt');
+                      localStorage.removeItem('expired_at');
+                      localStorage.removeItem('identidad');
+                      this.router.navigate(['/login']);
+                      reject();
+                  } else {
+                    // console.log(respuesta);
+                    this.data = respuesta
+                    console.log('promesa resulta');
+                    resolve();
+                  }
+              });
         }
       }
+
+    });
+
+    return promise;
   }
 
-  public getStorage():Data{
+  public getStorage(): Data {
     this.data = JSON.parse(localStorage.getItem('identidad'))
     return this.data;
   }

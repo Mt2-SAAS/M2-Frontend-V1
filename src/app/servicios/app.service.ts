@@ -131,7 +131,7 @@ export class AppService {
       'Content-Type': 'application/json'
     });
 
-    return this._http.post(url, body, {headers:headers})
+    return this._http.post(url, body, {headers: headers})
            .map(respuesta => {
              return respuesta.json();
            })

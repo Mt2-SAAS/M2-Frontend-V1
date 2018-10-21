@@ -3,7 +3,7 @@
     <h1>Panel de Usuario</h1>
     <hr>
     <div *ngIf="auth.isAuthenticated()">
-      <p>Hola {{ data.real_name }}</p>
+      <p>Hola {{ auth?.data.real_name }}</p>
       <table border="1 px">
         <thead>
           <td>login</td>
@@ -11,9 +11,9 @@
           <td>mds</td>
         </thead>
         <tbody>
-          <td>{{ data.login }}</td>
-          <td>{{ data.email }}</td>
-          <td>{{ data.mds }}</td>
+          <td>{{ auth?.data.login }}</td>
+          <td>{{ auth?.data.email }}</td>
+          <td>{{ auth?.data.mds }}</td>
         </tbody>
       </table>
       <button (click)="auth.logout()"

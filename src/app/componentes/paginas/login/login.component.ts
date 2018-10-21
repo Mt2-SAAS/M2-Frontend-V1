@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//importando servicios
+// importando servicios
 import { TitleService, AuthService } from '../../../servicios/servicios.module';
-//importando modulos de formulario
+// importando modulos de formulario
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-//importando interface
+// importando interface
 import { Ingreso } from '../../../interfaces/ingreso.interface';
-//Importando Router
+// Importando Router
 import { Router } from '@angular/router';
 
 
@@ -15,8 +15,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public titulo: string = 'Ingresar';
-  public mensaje: boolean = false;
+  public titulo = 'Ingresar';
+  public mensaje = false;
   public formulario: FormGroup;
   public ingreso: Ingreso = {
     login: null,
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(
-    private _titulo:TitleService,
+    private _titulo: TitleService,
     private _router: Router,
     private _auth: AuthService
   ) {
@@ -53,14 +53,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.mensaje = false;
-    let ingreso: Ingreso = {
+    const ingreso: Ingreso = {
       login: this.formulario.value['login'],
       password: ''
     }
     this._auth.login(this.formulario.value)
       .then( () => {
         this.mensaje = true
-        this.redirect(ingreso)
+        this.redirect()
       })
       .catch( () => {
         this.mensaje = true
@@ -71,14 +71,10 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  redirect(ingreso) {
-    const promise = new Promise( (resolve, reject) => {
+  redirect() {
       if (this._auth.isAuthenticated() === true) {
         this._router.navigate(['/panel_usuario']);
-        resolve();
       }
-    });
-    return promise
   }
 
 }
