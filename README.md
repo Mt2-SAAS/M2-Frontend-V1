@@ -1,6 +1,6 @@
 # Metin2app
 
-[![Build Status](https://travis-ci.org/luisito666/F2RestClient.svg?branch=master)](https://travis-ci.org/luisito666/F2RestClient)
+[![Build Status](https://travis-ci.org/luisito666/Mt2Web.js.svg?branch=master)](https://travis-ci.org/luisito666/F2RestClient)
 
 ## Servidor de desarrollo
 
