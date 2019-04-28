@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//importando servicios
+// importando servicios
 import { TitleService, AuthService } from '../../../servicios/servicios.module';
-//importando modulos de formulario
+// importando modulos de formulario
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-//importando interface
+// importando interface
 import { Ingreso } from '../../../interfaces/ingreso.interface';
-//Importando Router
+// Importando Router
 import { Router } from '@angular/router';
 
 
@@ -15,27 +15,27 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public titulo:string = "Ingresar";
-  public mensaje:boolean = false;
-  public formulario:FormGroup;
-  public ingreso:Ingreso = {
-    login:null,
-    password:null
+  public titulo = 'Ingresar';
+  public mensaje = false;
+  public formulario: FormGroup;
+  public ingreso: Ingreso = {
+    login: null,
+    password: null
   }
 
   constructor(
-    private _titulo:TitleService,
+    private _titulo: TitleService,
     private _router: Router,
     private _auth: AuthService
   ) {
-  this._titulo.setTitulo('Metin2 '+this._titulo.servername+' - Login');
+  this._titulo.setTitulo('Metin2 ' + this._titulo.servername + ' - Login');
 
   this.formulario = new FormGroup({
-    'login': new FormControl('',[
+    'login': new FormControl('', [
                                   Validators.required,
                                   Validators.minLength(4)
                                 ]),
-    'password': new FormControl('',[
+    'password': new FormControl('', [
                                   Validators.required,
                                   Validators.minLength(4)
                                 ])
@@ -51,27 +51,30 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(){
+  login() {
     this.mensaje = false;
-    this._auth.login(this.formulario.value);
-    let ingreso:Ingreso = {
+    const ingreso: Ingreso = {
       login: this.formulario.value['login'],
-      password:''
+      password: ''
     }
-
-    setTimeout(()=> {
-      if(this._auth.isAuthenticated() == true){
-        this._router.navigate(['/panel_usuario']);
-      } else {
+    this._auth.login(this.formulario.value)
+      .then( () => {
+        this.mensaje = true
+        this.redirect()
+      })
+      .catch( () => {
+        this.mensaje = true
         this.formulario.reset(ingreso);
-        this.mensaje = true;
-        setTimeout( () => {
+        setTimeout(() => {
           this.mensaje = false;
-        }, 5000);        
+        }, 5000);
+      });
+  }
+
+  redirect() {
+      if (this._auth.isAuthenticated() === true) {
+        this._router.navigate(['/panel_usuario']);
       }
-    },1000);
-
-
   }
 
 }
