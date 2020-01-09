@@ -1,46 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-//importando recaptcha
-//import { RecaptchaModule } from 'ng-recaptcha';
-
-//Locale ID
-import { LOCALE_ID } from '@angular/core';
-
-//Servicios
-import { ServiciosModule } from './servicios/servicios.module';
-
-//Routing
-import { APP_ROUTING } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { BootstrapComponent } from './bootstrap/bootstrap.component';
 
-//Importando el core de la aplicacion
-import { NucleoModule } from './componentes/nucleo/nucleo.module';
 
-//importando las paginas de la aplicacion
-import { PaginasModule } from './componentes/paginas/paginas.module';
+// Custom Modules
+import { SharedModule } from './shared/shared.module';
+import { ServicesModule } from './services/services.module';
+import { AppRoutingModule } from './app.routing.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BootstrapComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    //RecaptchaModule.forRoot(),
-    APP_ROUTING,
-    NucleoModule,
-    ServiciosModule.forRoot(),
-    PaginasModule
+    SharedModule,
+    ServicesModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'es'},
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

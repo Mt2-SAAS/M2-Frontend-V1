@@ -1,0 +1,39 @@
+import { NgModule } from '@angular/core';
+
+// Components
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DescargasComponent } from './descargas/descargas.component';
+import { DonacionesComponent } from './donaciones/donaciones.component';
+import { ExitoComponent } from './exito/exito.component';
+import { GremiosComponent } from './gremios/gremios.component';
+import { JugadoresComponent } from './jugadores/jugadores.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { TerminosComponent } from './terminos/terminos.component';
+
+// Local Modules
+import { SharedModule } from '../shared/shared.module';
+// import { AuthModule } from './auth/auth.module';
+import { PagesRoutingModule } from './pages.routing';
+
+
+
+@NgModule({
+    declarations: [
+        DashboardComponent,
+        DescargasComponent,
+        DonacionesComponent,
+        ExitoComponent,
+        GremiosComponent,
+        JugadoresComponent,
+        InicioComponent,
+        TerminosComponent
+    ],
+    imports: [
+        SharedModule,
+        // AuthModule,
+        PagesRoutingModule
+    ],
+    exports: [],
+    providers: [],
+})
+export class PagesModule {}
