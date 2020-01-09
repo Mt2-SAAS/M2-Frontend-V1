@@ -14,7 +14,7 @@ import { TopjugadoresComponent } from './topjugadores/topjugadores.component';
 import { DashboardComponent } from './dashborad/dashboard.component';
 
 @NgModule({
-  imports:[
+  imports: [
     CommonModule,
     RouterModule,
     FormsModule,
@@ -32,7 +32,7 @@ import { DashboardComponent } from './dashborad/dashboard.component';
     TopjugadoresComponent,
     DashboardComponent
   ],
-  exports:[
+  exports: [
     DescargaComponent,
     DonacionesComponent,
     ExitoComponent,

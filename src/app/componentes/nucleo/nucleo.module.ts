@@ -7,17 +7,17 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GuildinfoComponent } from './guildinfo/guildinfo.component';
 
 @NgModule({
-  imports:[
+  imports: [
     CommonModule,
     RouterModule
   ],
-  declarations:[
+  declarations: [
     ServerinfoComponent,
     PlayerinfoComponent,
     NavbarComponent,
     GuildinfoComponent
   ],
-  exports:[
+  exports: [
     ServerinfoComponent,
     PlayerinfoComponent,
     NavbarComponent,
