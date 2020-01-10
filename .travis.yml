@@ -2,11 +2,11 @@
 
 language: node_js
 node_js:
-  - "6.9"
+  - "10.14"
 
 branches:
   only:
-    - master
+    - update-angular
 
 before_script:
   - npm install -g @angular/cli
