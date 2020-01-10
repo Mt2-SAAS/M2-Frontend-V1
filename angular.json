@@ -28,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/reborn.css",   
+              "src/assets/css/reborn.scss",   
               "src/styles.scss"
             ],
             "scripts": [

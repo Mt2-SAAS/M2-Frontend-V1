@@ -1,10 +1,10 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { BootstrapComponent } from './bootstrap/bootstrap.component';
 
 
-const routes: Routes = [
+const RootRoutes: Routes = [
     {
         path: '',
         component: BootstrapComponent,
@@ -12,9 +12,13 @@ const routes: Routes = [
     }
 ];
 
+const RouterConfig: ExtraOptions = {
+    useHash: false
+}
+
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(RootRoutes, RouterConfig)
     ],
     exports: [
         RouterModule
