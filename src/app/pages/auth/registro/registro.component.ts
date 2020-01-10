@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 // Local Services
 import { AuthService } from '../auth.service';
 
 // Global Services
 import { TitleService } from 'src/app/services';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -66,6 +66,7 @@ export class RegistroComponent implements OnInit {
     }
 
     truecheck() {
-        return !this.checkbox;
+        this.checkbox = !this.checkbox;
+        return this.checkbox;
     }
 }

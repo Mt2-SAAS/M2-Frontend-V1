@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import {
-    TitleService
+    TitleService,
+    LocalStorageService
   } from './index';
 
 
@@ -10,7 +11,8 @@ import {
     imports: [ ],
     exports: [],
     providers: [
-        TitleService
+        TitleService,
+        LocalStorageService
     ],
 })
 export class ServicesModule {}

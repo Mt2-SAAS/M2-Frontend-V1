@@ -17,7 +17,7 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: '',
+        path: 'auth',
         loadChildren: './auth/auth.module#AuthModule'
     },
     { path: 'inicio', component: InicioComponent },

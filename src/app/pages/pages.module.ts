@@ -12,9 +12,7 @@ import { TerminosComponent } from './terminos/terminos.component';
 
 // Local Modules
 import { SharedModule } from '../shared/shared.module';
-// import { AuthModule } from './auth/auth.module';
 import { PagesRoutingModule } from './pages.routing';
-
 
 
 @NgModule({
@@ -30,7 +28,6 @@ import { PagesRoutingModule } from './pages.routing';
     ],
     imports: [
         SharedModule,
-        // AuthModule,
         PagesRoutingModule
     ],
     exports: [],

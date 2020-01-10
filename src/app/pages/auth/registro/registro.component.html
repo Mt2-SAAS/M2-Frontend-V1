@@ -3,7 +3,7 @@
         <h1>Registro</h1>
         <hr>
 
-        <form [formGroup]="form" (ngSubmit)="registro()">
+        <form [formGroup]="form">
 
             <label>Nombre Cuenta:</label>
             <p>
@@ -68,7 +68,7 @@
                 </span>
             </p>
             <p>
-                <input type="checkbox" (click)="truecheck()">
+                <input type="checkbox" (change)="truecheck()">
                 <span>Aceptar los <a [routerLink]="['/terminos']">terminos y condiciones.</a></span>
             </p>
             <input (click)="registro()" type="submit" value="{{ formInputValue }}" [disabled]="!form.valid || !checkbox" />
