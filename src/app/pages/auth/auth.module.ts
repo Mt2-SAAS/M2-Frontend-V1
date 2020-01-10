@@ -10,7 +10,6 @@ import { RegistroComponent } from './registro/registro.component';
 // Local Services
 import { AuthService } from './auth.service';
 
-
 // Shared Module
 import { SharedModule } from '../../shared/shared.module';
 

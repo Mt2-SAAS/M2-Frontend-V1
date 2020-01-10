@@ -13,6 +13,11 @@ import { ExitoComponent } from './exito/exito.component';
 const routes: Routes = [
     {
         path: '',
+        redirectTo: '/inicio',
+        pathMatch: 'full'
+    },
+    {
+        path: '',
         loadChildren: './auth/auth.module#AuthModule'
     },
     { path: 'inicio', component: InicioComponent },
