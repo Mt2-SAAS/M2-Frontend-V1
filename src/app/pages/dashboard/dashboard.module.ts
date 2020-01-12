@@ -9,6 +9,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 // Components
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+// Local Services
+import { DashboardService } from './dashboard.service';
 
 
 @NgModule({
@@ -17,9 +19,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ],
     imports: [
         SharedModule,
-        DashboardRoutingModule
+        DashboardRoutingModule,
     ],
     exports: [],
-    providers: [],
+    providers: [
+        DashboardService
+    ],
 })
 export class DashboardModule {}

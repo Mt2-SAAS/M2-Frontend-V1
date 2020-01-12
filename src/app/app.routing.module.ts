@@ -13,8 +13,8 @@ const RootRoutes: Routes = [
 ];
 
 const RouterConfig: ExtraOptions = {
-    useHash: false
-}
+    useHash: true
+};
 
 @NgModule({
     imports: [
