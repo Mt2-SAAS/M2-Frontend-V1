@@ -1,4 +1,7 @@
-# Metin2
+[![Build Status](https://travis-ci.org/luisito666/Mt2Web.js.svg?branch=master)](https://travis-ci.org/luisito666/Mt2Web.js)
+ 
+
+# Metin2.js
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 
