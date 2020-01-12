@@ -15,6 +15,8 @@ import { TitleService } from 'src/app/services';
 })
 export class IngresarComponent implements OnInit {
 
+    mensaje: boolean;
+
     form: FormGroup;
     formInputValue = 'Ingresar';
 
@@ -44,10 +46,13 @@ export class IngresarComponent implements OnInit {
         this.auth.auth(this.form.value)
             .subscribe(
                 success => {
-                    this.router.navigate(['/exito']);
+                    this.router.navigate(['/panel_usuario']);
                 },
                 err => {
-
+                    this.mensaje = true;
+                    setTimeout(() => {
+                        this.mensaje = false;
+                    }, 5000);
                 }
             );
      }

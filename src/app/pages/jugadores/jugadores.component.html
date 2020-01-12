@@ -1,12 +1,12 @@
 <div class="postui post-con animated fadeIn fast">
-    <div class="con-wrap">
+    <div class="con-wrap top-centrado">
       <h1>Top Jugadores</h1>
       <hr>
       <div class="">
         <p>
           El ranking sera actualizado cada 24 horas.
         </p>
-        <table *ngIf="!cargando; else elseblock">
+        <table class="top-centrado" *ngIf="!cargando; else elseblock">
         <tr>
             <td class="color-white">Posición </td>
               <td class="color-white">Nombre </td>
@@ -32,18 +32,16 @@
         <div class="pagination">
           <span *ngIf="!cargando" class="page-links">
                  <button *ngIf="previustURL"
-                         (click)="getNexPlayer(previustURL)"
-                         type="button"
-                         [disabled]="boton"
+                         (click)="getPrevPlayer()"
+                         type="button"                         
                          class="boton-madera">Anterior</button>
                  <!-- <a *ngIf="previustURL" (click)="getNexPlayer(previustURL)" class="puntero">Anterior</a> -->
               <span class="page-current">
                   Pagina {{ realpag }} de {{ (total / 20) - (( total % 20 ) / 20) + 1 }}.
               </span>
                 <button *ngIf="nextURL"
-                        (click)="getPrevPlayer(nextURL)"
-                        type="button"
-                        [disabled]="boton"
+                        (click)="getNexPlayer()"
+                        type="button"                        
                         class="boton-madera"> Siguiente </button>
                 <!--<a *ngIf="nextURL" (click)="getPrevPlayer(nextURL)" class="puntero">Siguiente</a> -->
           </span>

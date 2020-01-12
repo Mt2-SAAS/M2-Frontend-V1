@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './serverinfo.component.html'
 })
 export class ServerInfoComponent implements OnInit {
+
+    cargando = true;
+    estadisticas: any;
+
     constructor() { }
 
     ngOnInit() { }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 // Components
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { DescargasComponent } from './descargas/descargas.component';
 import { DonacionesComponent } from './donaciones/donaciones.component';
 import { ExitoComponent } from './exito/exito.component';
@@ -17,7 +16,6 @@ import { PagesRoutingModule } from './pages.routing';
 
 @NgModule({
     declarations: [
-        DashboardComponent,
         DescargasComponent,
         DonacionesComponent,
         ExitoComponent,

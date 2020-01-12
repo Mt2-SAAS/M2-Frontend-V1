@@ -8,6 +8,9 @@ import { User, AccountSend } from './auth.interfaces';
 // Enviroment
 import { environment } from '../../../environments/environment';
 
+// Global Services
+import { LocalStorageService } from 'src/app/services';
+
 
 @Injectable()
 export class AuthService {
@@ -15,7 +18,8 @@ export class AuthService {
     baseUrl = environment.baseUrl;
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private localstg: LocalStorageService
     ) {}
 
     private get_headers() {
@@ -35,11 +39,11 @@ export class AuthService {
 
     auth(payload: User) {
         const url = `${this.baseUrl}/api/token/`;
-        const body = JSON.stringify(payload);
-        return this.post(url, body).pipe(
-            map( res => {
-                // Save the Token
-                console.log(res);
+        return this.post(url, payload).pipe(
+            map( (res: any) => {
+                // Save the Token and only return token
+                this.localstg.set_token(res.refresh);
+                return res.refresh;
             })
         );
     }

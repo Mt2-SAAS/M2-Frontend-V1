@@ -14,14 +14,12 @@
         <li class="menu4">
           <a [routerLink]="['/jugadores']" style="font-size: 10px;"><span class="chinese">TOP JUGADORES</span><br>PLAYER RANKING</a>
         </li>
-        <li class="menu8">
-          <!-- <a href="https://api.l4st.xyz/account/login" style="font-size: 10px;"><span class="chinese">Ingresar </span><br>login</a>-->
+        <li *ngIf="!auth.isAuthenticated()" class="menu8">          
           <a [routerLink]="['/auth/ingresar']" style="font-size: 10px;"><span class="chinese">Ingresar </span><br>login</a>
         </li>
-        <!--<li *ngIf="auth.isAuthenticated()" class="menu8">
-           <a href="https://api.l4st.xyz/account/login" style="font-size: 10px;"><span class="chinese">Ingresar </span><br>login</a>
+        <li *ngIf="auth.isAuthenticated()" class="menu8">           
           <a [routerLink]="['/panel_usuario']" style="font-size: 10px;"><span class="chinese">Panel Usuario </span><br>User Panel</a>
-        </li>--> 
+        </li>
       </ul>
       <!-- subnavigation -->
     </nav>

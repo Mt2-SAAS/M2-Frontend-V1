@@ -56,11 +56,11 @@ export class RegistroComponent implements OnInit {
     registro() {
         this.auth.register(this.form.value)
             .subscribe(
-                success => {
-                    this.router.navigate(['/login']);
+                () => {
+                    this.router.navigate(['/exito']);
                 },
                 err => {
-
+                    console.error(err);
                 }
             );
     }

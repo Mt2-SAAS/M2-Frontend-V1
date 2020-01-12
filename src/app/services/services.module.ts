@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import {
+    // Auth Services
+    AuthService,
+    AuthGuardService,
     TitleService,
-    LocalStorageService
+    LocalStorageService,
+    ApplicationService,
   } from './index';
 
 
@@ -11,8 +15,11 @@ import {
     imports: [ ],
     exports: [],
     providers: [
+        AuthService,
+        AuthGuardService,
         TitleService,
-        LocalStorageService
+        LocalStorageService,
+        ApplicationService
     ],
 })
 export class ServicesModule {}
