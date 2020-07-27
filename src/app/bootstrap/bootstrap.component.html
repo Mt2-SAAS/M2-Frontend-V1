@@ -1,0 +1,82 @@
+<div id="bb">
+    <div id="wrapper">
+        <app-navbar> </app-navbar>
+        <div class="main">
+            <div class="w940">
+                <div id="sidebar">
+                    <!-- sidebar -->
+                    <div class="left">
+                        <!-- User Panel -->
+                        <div class="sbox">
+                            <app-serverinfo></app-serverinfo>
+                            <div class="sbui sbft">
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <app-guildinfo></app-guildinfo>
+                    </div>
+                </div>
+
+                <div class="sbui sbft">
+                </div>
+                <div id="content">
+                    <div class="cui ctop">
+                    </div>
+                    <!-- Main Content Container -->
+                    <div class="cui ccon">
+                        <div class="clearfix">
+                        </div>
+                        <div class="cbox-ui">
+                            <div class="clearfix">
+                            </div>
+                            <router-outlet>
+                            </router-outlet>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar">
+                <a class="sb-download" [routerLink]="['/descargas']"></a>
+                <a class="sb-community" target="_blank"></a>
+                <a class="sb-guide"></a>
+                <!-- <a class="sb-guide" [routerLink]="['/donaciones']"></a>-->
+                <div class="clear">
+                </div>
+                <!-- Player Ranking -->
+                <div class="sbox">
+                    <app-playerinfo></app-playerinfo>
+                    <div class="sbui sbft">
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+            <div id="footer">
+                <div class="f-left">
+                    <p>Copyright &copy; Metin2 The Last Team 2017. All rights reserved. Edited Design by <a href="#">The
+                            Last Team.</a></p>
+                </div>
+                <div class="f-right">
+                    <a [routerLink]="['/inicio']">Inicio</a> &middot;
+                    <a [routerLink]="['/auth/registro']">Registro</a> &middot;
+                    <!-- <a href="#">Equipo</a> &middot;-->
+                    <a [routerLink]="['/descargas']">Descarga</a> &middot;
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

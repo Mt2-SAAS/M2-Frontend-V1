@@ -1,0 +1,26 @@
+<div class="sbui sb-con">
+    <h5>Top Gremios</h5>
+    <hr>
+    <span id="minirankcontent">
+
+        <!-- Ranking Table -->
+        <table *ngIf="!cargando; else elseblock" id="sbRanking" width="82%" border=0 align=center>
+            <tr *ngFor="let gremio of gremios; let i = index">
+                <td class="t-rank"> {{ i + 1 }} </td>
+                <td class="t-name">{{ gremio.name }}</td>
+                <td class="t-lvl">{{ gremio.level }}</td>
+            </tr>
+        </table>
+
+        <ng-template #elseblock>
+            <div class="loader-personal">
+            </div>
+        </ng-template>
+
+        <a id="miniranklink" class="bplus" [routerLink]="['/gremios']">Clasificacion Comp.</a>
+
+        <div class="clear margen-boton">
+        </div>
+
+    </span>
+</div>

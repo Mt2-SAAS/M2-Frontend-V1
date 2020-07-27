@@ -1,0 +1,26 @@
+#menu {
+    text-align: center;
+}
+
+#menu li {
+    display: inline;
+}
+
+#menu li a {
+    font-family: Arial;
+    font-size: 11px;
+    text-decoration: none;
+    padding: 10px;
+    /* background-color: #2175bc; */
+    color: #fff;
+}
+
+#menu li a:hover {
+    background-color: #e41414;
+    margin-top: -2;
+    padding-bottom: 12px;
+}
+
+.active {
+    background-color: blue;
+}

@@ -1,0 +1,22 @@
+<div class="postui post-con animated fadeIn fast">
+    <div class="con-wrap">
+
+        <div>
+            <ul id="menu">
+                <li >
+                    <a [routerLink]="['home']">Inicio</a>
+                </li>
+                <li>
+                    <a [routerLink]="['cambio_contrasena']">Cambio de password</a>
+                </li>
+                <li>
+                    <a [routerLink]="['personajes']">Personajes</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <router-outlet></router-outlet>
+
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<h1>Panel de Usuario</h1>
+<hr>
+<h2>
+    Informacion del usuario
+</h2>
+<div>
+    <p>Usuario: <strong> {{ user.login }} </strong> </p>
+    <p>Email: <strong> {{ user.email }} </strong> </p>
+    <p>Nombre Real: <strong> {{ user.real_name }} </strong> </p>
+    <p>MDS: <strong> {{ user.coins }} </strong> </p>
+    <p>Fecha de Registro: <strong> {{  user.create_time | date }} </strong> </p>
+    <button (click)="auth.logOut()" class="boton-madera" type="button" name="button"> Cerrar Sesión</button>
+</div>

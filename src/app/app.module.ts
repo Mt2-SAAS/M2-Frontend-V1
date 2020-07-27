@@ -1,46 +1,58 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
 
-//importando recaptcha
-//import { RecaptchaModule } from 'ng-recaptcha';
-
-//Locale ID
-import { LOCALE_ID } from '@angular/core';
-
-//Servicios
-import { ServiciosModule } from './servicios/servicios.module';
-
-//Routing
-import { APP_ROUTING } from './app.routes';
-
+// Componets
 import { AppComponent } from './app.component';
+import { BootstrapComponent } from './bootstrap/bootstrap.component';
 
-//Importando el core de la aplicacion
-import { NucleoModule } from './componentes/nucleo/nucleo.module';
+// Custom Modules
+import { SharedModule } from './shared/shared.module';
+import { ServicesModule } from './services/services.module';
+import { AppRoutingModule } from './app.routing.module';
 
-//importando las paginas de la aplicacion
-import { PaginasModule } from './componentes/paginas/paginas.module';
+// Environment
+import { environment } from 'src/environments/environment';
+
+// Call a Local service to help to optain token
+import { token_getter } from './services/token-getter';
+import { ErrorInterceptor } from './services/error-interceptor';
+
+
+const jwtOptions: JwtModuleOptions = {
+    config: {
+        tokenGetter: token_getter,
+        whitelistedDomains: [environment.publicDomain],
+        blacklistedRoutes: [
+            environment.publicDomain + '/api/guild_rank/',
+            environment.publicDomain + '/api/player_rank/',
+            environment.publicDomain + '/api/signup/',
+            environment.publicDomain + '/api/token/',
+            environment.publicDomain + '/api/player_rank/'
+        ]
+    }
+};
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BootstrapComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    //RecaptchaModule.forRoot(),
-    APP_ROUTING,
-    NucleoModule,
-    ServiciosModule.forRoot(),
-    PaginasModule
+    SharedModule,
+    ServicesModule,
+    AppRoutingModule,
+    HttpClientModule,
+    JwtModule.forRoot(jwtOptions)
   ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'es'},
-  ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

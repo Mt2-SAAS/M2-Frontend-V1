@@ -1,0 +1,22 @@
+<div class="sbui sb-con">
+    <h5>Top Jugadores</h5>
+    <hr>
+    
+    <span  id="minirankcontent"><!-- Ranking Table -->
+      <table *ngIf="!cargando; else elseblock" id="sbRanking" align="center">
+        <tr *ngFor="let jugador of jugadores; let i = index">
+          <td class="sbrc1"> {{ i + 1 }} </td>
+          <td class="sbrc1"> {{ jugador.name }} </td>
+          <td class="sbrc1"> {{ jugador.level }}</td>
+        </tr>
+      </table>
+
+      <ng-template #elseblock>
+        <div class="loader-personal">
+        </div>
+      </ng-template>
+
+    </span>
+
+    <a id="miniranklink" class="bplus" [routerLink]="['/jugadores']">Clasificacion Comp.</a>
+</div>
