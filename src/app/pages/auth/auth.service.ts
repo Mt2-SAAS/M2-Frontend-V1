@@ -54,4 +54,9 @@ export class AuthService {
         return this.post(url, body);
     }
 
+    verify_user(username: string) {
+        const url = `${this.baseUrl}/api/info/${username}`;
+        return this.http.get(url);
+    }
+
 }

@@ -1,23 +1,22 @@
 <div class="postui post-con animated fadeIn fast">
     <div class="con-wrap">
-        <h1>Panel de Usuario</h1>
-        <hr>
+
         <div>
-            <p>Hola {{ usuario?.real_name }}</p>
-            <table border="1 px">
-                <thead>
-                    <td>login</td>
-                    <td>correo</td>
-                    <td>mds</td>
-                </thead>
-                <tbody>
-                    <td>{{ usuario?.login }}</td>
-                    <td>{{ usuario?.email }}</td>
-                    <td>{{ usuario?.coins }}</td>
-                </tbody>
-            </table>
-            <button (click)="auth.logOut()" class="boton-madera" type="button" name="button"> Cerrar Sesión</button>
+            <ul id="menu">
+                <li >
+                    <a [routerLink]="['home']">Inicio</a>
+                </li>
+                <li>
+                    <a [routerLink]="['cambio_contrasena']">Cambio de password</a>
+                </li>
+                <li>
+                    <a [routerLink]="['personajes']">Personajes</a>
+                </li>
+            </ul>
         </div>
+
+
+        <router-outlet></router-outlet>
 
     </div>
 </div>

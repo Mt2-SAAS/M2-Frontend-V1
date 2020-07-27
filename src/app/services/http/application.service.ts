@@ -24,4 +24,9 @@ export class ApplicationService {
         return this.http.get(url);
     }
 
+    get_stats(){
+        const url = `${this.apiUrl}/api/server_status/`;
+        return this.http.get(url)
+    }
+
 }

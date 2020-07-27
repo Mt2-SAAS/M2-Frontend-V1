@@ -46,7 +46,7 @@ export class IngresarComponent implements OnInit {
         this.auth.auth(this.form.value)
             .subscribe(
                 success => {
-                    this.router.navigate(['/panel_usuario']);
+                    this.router.navigate(['/panel_usuario/home']);
                 },
                 err => {
                     this.mensaje = true;

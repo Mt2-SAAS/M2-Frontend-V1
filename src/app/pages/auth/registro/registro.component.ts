@@ -8,6 +8,9 @@ import { AuthService } from '../auth.service';
 // Global Services
 import { TitleService } from 'src/app/services';
 
+// RXJS
+import { Observable } from 'rxjs';
+
 
 @Component({
     selector: 'app-registro',
@@ -18,24 +21,22 @@ export class RegistroComponent implements OnInit {
     form: FormGroup;
     formInputValue = 'Registrar';
     checkbox = false;
+    username: boolean;
+
 
     constructor(
         private title: TitleService,
         private router: Router,
         private auth: AuthService
-    ) { }
-
-    ngOnInit() {
-        this.title.setTitle(this.title.servername + ' - Registro');
-
+    ) {
         this.form = new FormGroup({
             login: new FormControl('', [
                 Validators.required,
                 Validators.minLength(4)
-            ]),
+            ], [this.verifyUser.bind(this)]),
             password: new FormControl('', [
                 Validators.required,
-                Validators.minLength(4)
+                Validators.minLength(6)
             ]),
             real_name: new FormControl('', [
                 Validators.required,
@@ -50,8 +51,11 @@ export class RegistroComponent implements OnInit {
                 Validators.pattern('.{7,7}')
             ])
         });
-
      }
+
+    ngOnInit() {
+        this.title.setTitle(this.title.servername + ' - Registro');
+    }
 
     registro() {
         this.auth.register(this.form.value)
@@ -68,5 +72,37 @@ export class RegistroComponent implements OnInit {
     truecheck() {
         this.checkbox = !this.checkbox;
         return this.checkbox;
+    }
+
+    checkUser(usuario: string) {
+        this.auth.verify_user( usuario ).subscribe(
+          (response: any) => {        
+            if (response.status) {
+              this.username = true;
+            } else {
+              this.username = false;
+            }
+          },
+          // Manejando el error
+          () => {
+          this.username = false;
+        });
+    }
+
+    verifyUser(control: FormControl): Promise<any> | Observable<any> {
+        const usuario = control.value.toLowerCase();
+        const promesa = new Promise(
+          (resolve) => {
+            this.checkUser(usuario);
+            setTimeout( () => {
+              if (this.username) {
+                resolve({existe: true});
+              } else {
+                resolve( null );
+              }
+            }, 2000);
+          }
+        );
+        return promesa;
     }
 }

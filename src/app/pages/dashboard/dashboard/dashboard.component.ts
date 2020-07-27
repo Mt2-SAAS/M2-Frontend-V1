@@ -1,38 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-
-// Local Services
-import { DashboardService } from '../dashboard.service';
-
-// Global Services
-import { AuthService } from 'src/app/services';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html'
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-    usuario: any;
+    
+    constructor() { }
 
-    constructor(
-        private service: DashboardService,
-        public auth: AuthService
-    ) { }
-
-    ngOnInit() {
-        this.getData();
-    }
-
-    getData() {
-        this.service.get_user()
-            .subscribe(
-                success => {
-                    console.log(success);
-                    this.usuario = success;
-                },
-                err  => {
-                    console.error(err);
-                }
-            );
-    }
 }

@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 
 // Global Services
 // import { LocalStorageService } from 'src/app/services';
+import { UserLogin, CHPass } from './dashboard.interfaces';
 
 
 @Injectable()
@@ -36,7 +37,12 @@ export class DashboardService {
 
     get_user() {
         const url = `${this.baseUrl}/api/current_user/`;
-        return this.http.get(url);
+        return this.http.get<UserLogin>(url);
+    }
+
+    change_password(payload: CHPass) {
+        const url = `${this.baseUrl}/api/change_pass/`;
+        return this.post(url, payload);
     }
 
 
