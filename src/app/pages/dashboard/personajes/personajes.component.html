@@ -1,5 +1,13 @@
-<h1>
-    Personajes
-</h1>
-
+<h1> Lista de personajes </h1>
 <hr>
+
+<div *ngIf="ownUsers.length > 0; else second">
+
+
+</div>
+
+<ng-template #second>
+    <strong>
+        No se encontraron jugadores relacionados con tu cuenta.
+    </strong>
+</ng-template>

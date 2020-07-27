@@ -40,6 +40,11 @@ export class DashboardService {
         return this.http.get<UserLogin>(url);
     }
 
+    get_current_players() {
+        const url = `${this.baseUrl}/api/current_players/`;
+        return this.http.get(url);
+    }
+
     change_password(payload: CHPass) {
         const url = `${this.baseUrl}/api/change_pass/`;
         return this.post(url, payload);
